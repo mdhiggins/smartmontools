@@ -2,7 +2,7 @@ FROM alpine:3.8
 MAINTAINER mdhiggins <mdhiggins23@gmail.com>
 
 RUN set -xe && \
-    apk add --update --no-cache \
+    apk add --update --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing \
     smartmontools \
     ssmtp \
     mailutils && \
