@@ -1,9 +1,12 @@
-FROM debian:jessie
+FROM alphine:3.8
 MAINTAINER mdhiggins <mdhiggins23@gmail.com>
 
-RUN apt-get update && \
-    apt-get -qq install smartmontools ssmtp mailutils && \
-    apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN set -xe && \
+    apk add --update --no-cache \
+    smartmontools \
+    ssmtp \
+    mailutils && \
+    rm -rf /tmp/* /var/tmp/
 
 ADD smartd.conf /etc/smartd.conf
 ADD ssmtp.conf /etc/ssmtp/ssmtp.conf
