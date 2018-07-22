@@ -1,4 +1,4 @@
-FROM alphine:3.8
+FROM alpine:3.8
 MAINTAINER mdhiggins <mdhiggins23@gmail.com>
 
 RUN set -xe && \
