@@ -7,6 +7,9 @@ on:
   schedule:
     - cron:  '0 0 1 * *'
 
+env:
+  tag: latest
+
 jobs:
   docker:
     runs-on: ubuntu-latest
@@ -24,12 +27,21 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
       -
+        name: Login to GitHub Container Registry
+        uses: docker/login-action@v1 
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ github.token }}
+      -
         name: Build and push
         id: docker_build
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: mdhiggins/smartmontools:latest
+          tags: |
+            ${{ github.repository }}:${{ env.tag }}
+            ghcr.io/${{ github.repository }}:${{ env.tag }}
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
