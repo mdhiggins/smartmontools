@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM lscr.io/linuxserver/baseimage-alpine:3.21
 LABEL maintainer="mdhiggins <mdhiggins23@gmail.com>"
 
 RUN set -xe && \
