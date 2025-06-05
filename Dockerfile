@@ -9,8 +9,7 @@ RUN set -xe && \
     tzdata \
     smartmontools \
     ssmtp \
-    mailutils \
-    busybox-syslogd && \
+    mailutils && \
     cp /usr/share/zoneinfo/${TZ} /etc/localtime && \
     echo "${TZ}" > /etc/timezone && \
     rm -rf /tmp/* /var/tmp/ /var/cache/apk/*
