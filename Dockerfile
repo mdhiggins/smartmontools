@@ -4,11 +4,11 @@ LABEL maintainer="mdhiggins <mdhiggins23@gmail.com>"
 ENV TZ=America/New_York
 
 RUN set -xe && \
-    apk add --update --no-cache \
+    apk add --update --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing \
     tzdata \
     smartmontools \
     ssmtp \
-    heirloom-mailx && \
+    mailutils && \
     cp /usr/share/zoneinfo/${TZ} /etc/localtime && \
     echo "${TZ}" > /etc/timezone && \
     rm -rf /tmp/* /var/tmp/ /var/cache/apk/*
