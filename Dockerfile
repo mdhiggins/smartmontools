@@ -16,4 +16,4 @@ RUN set -xe && \
 ADD smartd.conf /etc/smartd.conf
 ADD ssmtp.conf /etc/ssmtp/ssmtp.conf
 
-CMD /usr/sbin/smartd --debug
+CMD /usr/sbin/smartd
