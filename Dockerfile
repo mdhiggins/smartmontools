@@ -5,6 +5,7 @@ ENV TZ=America/New_York
 
 RUN set -xe && \
     apk add --update --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing \
+    bash \
     tzdata \
     smartmontools \
     ssmtp \
