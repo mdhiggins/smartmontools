@@ -60,6 +60,19 @@ hostname=your-hostname
 
 > 💡 You must generate an [App Password](https://support.google.com/accounts/answer/185833?hl=en) if you're using Gmail with 2FA.
 
+
+### Confirm Scheduling!
+
+run `docker exec smartmontools smartd -q showtests` and confirm your testing schedule shows upt
+
+```
+Next scheduled self tests (at most 5 of each type per device):
+Device: /dev/sda [SAT], will do test 1 of type S at Sun Jun  8 04:27:51 2025 EDT
+Device: /dev/sdb [SAT], will do test 1 of type S at Sun Jun  8 04:27:51 2025 EDT
+Device: /dev/sdc [SAT], will do test 1 of type S at Sun Jun  8 04:27:51 2025 EDT
+Device: /dev/nvme0, will do test 1 of type S at Sun Jun  8 04:27:51 2025 EDT
+```
+
 ---
 
 ## 🐳 Docker Compose
