@@ -37,10 +37,12 @@ DEFAULT -a -s (S/../../7/13|L/../15/./15) -W 0,0,70 -m your@email.com -M daily -
 
   * `S` = short test every 7th day at 13:00
   * `L` = long test every 15th day at 15:00
-* `-W` = temperature thresholds (informational, warning, critical)
+* `-W` = temperature thresholds (diff, info, crit)
 * `-m` = email address for alerts
 * `-M daily` = sends a status report every day
 * `-H` = monitor SMART health status
+
+[smartd.conf documentation](https://linux.die.net/man/5/smartd.conf)
 
 ### `ssmtp.conf`
 
@@ -86,21 +88,13 @@ services:
 ## 📧 Email Setup Notes
 
 * **Test email** is sent at startup using `-M test`
-* **Daily report** requires `-M daily` and proper scheduling via `-s`
-* Ensure system time and container time are aligned
+* **Daily report** requires `-M daily` and proper scheduling via `-s` and are only sent if an error is detected
+* Ensure system time and container time are aligned using the TZ variable
 
 ---
 
 ## 🔍 Troubleshooting
 
-* No daily emails? Make sure `smartd` is **not** running with `--debug`.
-* No logs? Mount a log directory or check if `smartd` is running in normal mode.
 * `smartctl -l selftest /dev/sdX` will show test history for confirmation.
 
 ---
-
-## 🧪 Development / Manual Run
-
-```bash
-docker run --rm -it --privileged
-```
