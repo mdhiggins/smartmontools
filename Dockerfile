@@ -9,12 +9,16 @@ RUN set -xe && \
     tzdata \
     smartmontools \
     ssmtp \
-    mailutils && \
+    mailutils \
+    busybox-syslogd && \
     cp /usr/share/zoneinfo/${TZ} /etc/localtime && \
     echo "${TZ}" > /etc/timezone && \
     rm -rf /tmp/* /var/tmp/ /var/cache/apk/*
 
 ADD smartd.conf /etc/smartd.conf
 ADD ssmtp.conf /etc/ssmtp/ssmtp.conf
+ADD entrypoint.sh /entrypoint.sh
 
-CMD ["/usr/sbin/smartd", "-n", "-i", "60"]
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]
