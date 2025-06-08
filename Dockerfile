@@ -10,8 +10,6 @@ RUN set -xe && \
     smartmontools \
     ssmtp \
     mailutils && \
-    cp /usr/share/zoneinfo/${TZ} /etc/localtime && \
-    echo "${TZ}" > /etc/timezone && \
     rm -rf /tmp/* /var/tmp/ /var/cache/apk/*
 
 ADD smartd.conf /etc/smartd.conf
