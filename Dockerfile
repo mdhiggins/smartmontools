@@ -8,12 +8,12 @@ RUN set -xe && \
     bash \
     tzdata \
     smartmontools \
-    ssmtp \
+    msmtp \
     mailutils && \
     rm -rf /tmp/* /var/tmp/ /var/cache/apk/*
 
 ADD smartd.conf /etc/smartd.conf
-ADD ssmtp.conf /etc/ssmtp/ssmtp.conf
+ADD msmtprc /etc/msmtprc
 ADD entrypoint.sh /entrypoint.sh
 
 RUN chmod +x /entrypoint.sh
