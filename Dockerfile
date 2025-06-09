@@ -17,5 +17,6 @@ ADD msmtprc /etc/msmtprc
 ADD entrypoint.sh /entrypoint.sh
 
 RUN chmod +x /entrypoint.sh
+RUN ln -sf /usr/bin/msmtp /usr/sbin/sendmail
 
 ENTRYPOINT ["/entrypoint.sh"]
